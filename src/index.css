@@ -1,0 +1,178 @@
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.tt-root {
+  --bg: #f3f1ea;
+  --surface: #fdfcf9;
+  --surface-2: #f0eee5;
+  --ink: #21281f;
+  --ink-soft: #837d6e;
+  --moss: #4a5d43;
+  --moss-dark: #38472f;
+  --moss-light: #7c9270;
+  --moss-pale: #e3e8dc;
+  --clay: #b1543a;
+  --clay-pale: #f5e2da;
+  --gold: #b98b2e;
+  --gold-pale: #f5ead0;
+  --line: #e7e4d9;
+  --shadow-sm: 0 1px 2px rgba(33, 40, 31, 0.04), 0 1px 1px rgba(33, 40, 31, 0.03);
+  --shadow-card: 0 1px 2px rgba(33, 40, 31, 0.04), 0 10px 26px -10px rgba(33, 40, 31, 0.14);
+  --shadow-float: 0 14px 34px -10px rgba(33, 40, 31, 0.22), 0 2px 10px rgba(33, 40, 31, 0.08);
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "IBM Plex Sans", sans-serif;
+  min-height: 100vh;
+}
+.tt-root .font-display {
+  font-family: "Fraunces", serif;
+}
+.tt-root .font-mono {
+  font-family: "IBM Plex Mono", monospace;
+}
+.tt-card {
+  background: var(--surface);
+  border: 1px solid rgba(33, 40, 31, 0.05);
+  border-radius: 24px;
+  box-shadow: var(--shadow-card);
+}
+.tt-inset {
+  background: var(--surface-2);
+  border: none;
+  border-radius: 16px;
+}
+.tt-row {
+  background: var(--surface);
+  border: 1px solid rgba(33, 40, 31, 0.04);
+  border-radius: 999px;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.15s ease, opacity 0.15s ease;
+}
+.tt-row:hover {
+  box-shadow: var(--shadow-card);
+}
+.tt-btn-primary {
+  background: var(--moss);
+  color: #f6f5ef;
+  box-shadow: var(--shadow-card);
+  transition: background 0.15s ease, box-shadow 0.15s ease;
+}
+.tt-btn-primary:hover {
+  background: var(--moss-dark);
+}
+.tt-btn-primary:disabled {
+  opacity: 0.55;
+}
+.tt-btn-ghost {
+  background: var(--surface);
+  border: 1px solid rgba(33, 40, 31, 0.06);
+  color: var(--ink);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.15s ease, color 0.15s ease;
+}
+.tt-btn-ghost:hover {
+  color: var(--moss);
+  box-shadow: var(--shadow-card);
+}
+.tt-pill {
+  border: 1px solid rgba(33, 40, 31, 0.05);
+  background: var(--surface);
+  color: var(--ink-soft);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.15s ease;
+}
+.tt-pill-active {
+  background: var(--moss);
+  color: #f6f5ef;
+  border-color: var(--moss);
+  box-shadow: var(--shadow-card);
+}
+.tt-input {
+  background: var(--surface-2);
+  border: 1px solid transparent;
+  border-radius: 12px;
+  color: var(--ink);
+  font-family: "IBM Plex Mono", monospace;
+}
+.tt-input:focus {
+  outline: none;
+  background: var(--surface);
+  border-color: var(--moss);
+}
+.tt-label {
+  color: var(--ink-soft);
+}
+input[type="range"].tt-slider {
+  accent-color: var(--moss);
+}
+.tt-checkbox {
+  accent-color: var(--moss);
+}
+.tt-tag-up {
+  background: var(--moss-pale);
+  color: var(--moss-dark);
+}
+.tt-tag-down {
+  background: var(--clay-pale);
+  color: var(--clay);
+}
+.tt-tag-steady {
+  background: var(--gold-pale);
+  color: var(--gold);
+}
+::selection {
+  background: var(--moss-pale);
+}
+
+/* ------------------------------ bottom nav ------------------------------ */
+.tt-bottom-nav {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 40;
+  display: flex;
+  justify-content: center;
+  padding: 0 16px calc(14px + env(safe-area-inset-bottom, 0px));
+  pointer-events: none;
+}
+.tt-bottom-nav-inner {
+  pointer-events: auto;
+  width: 100%;
+  max-width: 30rem;
+  display: flex;
+  gap: 2px;
+  background: var(--surface);
+  border: 1px solid rgba(33, 40, 31, 0.05);
+  border-radius: 26px;
+  box-shadow: var(--shadow-float);
+  padding: 7px;
+}
+.tt-nav-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  padding: 8px 4px 7px;
+  border-radius: 18px;
+  color: var(--ink-soft);
+  background: transparent;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.tt-nav-item[data-active="true"] {
+  background: var(--moss-pale);
+  color: var(--moss-dark);
+}
+.tt-nav-label {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.02em;
+}
+.tt-nav-item[data-active="true"] .tt-nav-label {
+  font-weight: 600;
+}
